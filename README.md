@@ -1,4 +1,3 @@
-# Rayan-24bce1002-_ai_recruitment_task
 # IMDb Movie Review Sentiment Analysis
 
 ## Student Information
@@ -26,57 +25,68 @@ The goal is to classify reviews as **Positive** or **Negative** using multiple m
 - Tokenization  
 - Stopwords removal  
 - Lemmatization  
-- Vectorization using **CountVectorizer** and **TF-IDF**
+- Vectorization using **BoW, TF-IDF, W2V, and Doc2Vec**  
 
 ---
 
 ## 4. Models Implemented
-1. Logistic Regression  
-2. Support Vector Machine (SVM)  
-3. Random Forest  
-4. XGBoost  
+1. Logistic Regression (BoW & TF-IDF)  
+2. Linear SVM (TF-IDF)  
+3. Random Forest (W2V)  
+4. Naive Bayes (BoW, TF-IDF, W2V, Doc2Vec)  
 
 ---
 
 ## 5. Model Training
 - Train/test split: 80/20  
-- Hyperparameter tuning using default parameters or GridSearchCV  
-- Cross-validation applied where necessary  
+- Default hyperparameters used for most models  
+- Cross-validation applied where applicable  
 
 ---
 
 ## 6. Model Evaluation
-- Metrics: Accuracy, Precision, Recall, F1-score  
-- Confusion matrix for each model  
-- Classification report for each model  
-- Performance comparison across all models  
+- Metrics used: **Accuracy, Precision, Recall, F1-score**  
+- Visualizations included:  
+  - **Heatmaps** for confusion matrices  
+  - **Histplots** for model comparison  
+- Classification reports generated for all models  
+
+| Model                       | Accuracy |
+|------------------------------|---------|
+| Logistic Regression (BoW)    | 0.8725  |
+| Logistic Regression (TF-IDF) | 0.8857  |
+| Linear SVM (TF-IDF)          | 0.8798  |
+| Random Forest (W2V)          | 0.8327  |
+| Naive Bayes (BoW)            | 0.8436  |
+| Naive Bayes (TF-IDF)         | 0.8723  |
+| Naive Bayes (W2V)            | 0.7611  |
+| Naive Bayes (Doc2Vec)        | 0.7218  |
 
 ---
 
-## 7. Results
-- **Best performing model:** XGBoost  
-- **Overall accuracy:** ~0.90  
-- Confusion matrices and bar charts of Precision, Recall, F1-score included in the notebook  
+## 7. Observations
+- **Best performing model:** Logistic Regression (TF-IDF) → 0.8857 accuracy  
+- Linear SVM (TF-IDF) is close second → 0.8798  
+- Models using **BoW and TF-IDF** consistently outperform W2V and Doc2Vec features  
+- Naive Bayes performs worst on W2V and Doc2Vec, showing limitation with embedding-based features  
+- Visualizations like **heatmaps and histplots** provide clear insights into performance and metric comparisons  
+- XGBoost was tested but underperformed (~0.8269), likely due to feature choice  
 
 ---
 
-## 8. Observations
-- XGBoost achieves the highest accuracy and balanced class performance  
-- Logistic Regression and SVM perform slightly lower but are still competitive  
-- Random Forest handles class imbalance better than others  
-- Insights can guide future improvements in feature engineering and hyperparameter tuning  
+## 8. Conclusion
+- **TF-IDF with Logistic Regression or Linear SVM** is the recommended approach for this task  
+- Using multiple models shows breadth of approach and comparison  
+- Including **evaluation metrics, classification reports, heatmaps, and histplots** enhances interpretability  
+- Optional improvements:  
+  - Hyperparameter tuning  
+  - Dimensionality reduction (TruncatedSVD)  
+  - Deep learning models (LSTM, BERT) for potentially higher performance  
 
 ---
 
-## 9. Conclusion
-- Multiple ML models can successfully classify IMDb reviews  
-- XGBoost is recommended for this dataset based on metrics  
-- Future work: Incorporate deep learning models (LSTM/BERT) for potentially higher performance  
-
----
-
-## 10. Instructions to Run
+## 9. Instructions to Run
 1. Open the notebook in **Google Colab** or **Jupyter Notebook**  
 2. Install necessary packages:
 ```bash
-pip install pandas numpy scikit-learn seaborn matplotlib xgboost nltk
+pip install pandas numpy scikit-learn seaborn matplotlib xgboost nltk gensim
